@@ -3,7 +3,7 @@ const path = require("path");
 const { v4: uuidv4 } = require("uuid");
 
 async function commitRepo(message) {
-  const repoPath = path.resolve(process.cwd(), ".apnaGit");
+  const repoPath = path.resolve(process.cwd(), ".miniGit");
   const stagedPath = path.join(repoPath, "staging");
   const commitPath = path.join(repoPath, "commits");
 

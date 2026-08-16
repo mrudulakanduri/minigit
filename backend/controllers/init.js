@@ -2,7 +2,7 @@ const fs = require("fs").promises;
 const path = require("path");
 
 async function initRepo() {
-  const repoPath = path.resolve(process.cwd(), ".apnaGit");
+  const repoPath = path.resolve(process.cwd(), ".miniGit");
   const commitsPath = path.join(repoPath, "commits");
 
   try {
