@@ -10,18 +10,22 @@ const Dashboard = () => {
 
   useEffect(() => {
     const userId = localStorage.getItem("userId");
+const fetchRepositories = async () => {
+  try {
+    const response = await fetch(
+      `http://localhost:3002/repo/user/${userId}`
+    );
+    const data = await response.json();
 
-    const fetchRepositories = async () => {
-      try {
-        const response = await fetch(
-          `http://localhost:3002/repo/user/${userId}`
-        );
-        const data = await response.json();
-        setRepositories(data.repositories);
-      } catch (err) {
-        console.error("Error while fecthing repositories: ", err);
-      }
-    };
+    if (response.ok) {
+      setRepositories(data.repositories);
+    } else {
+      setRepositories([]);   // ← treat "not found" as "empty list", not a crash
+    }
+  } catch (err) {
+    console.error("Error while fecthing repositories: ", err);
+  }
+};
 
     const fetchSuggestedRepositories = async () => {
       try {
